@@ -1,5 +1,6 @@
 import AboutPreview from "@/components/home/AboutPreview";
 import Hero from "../../components/home/Hero";
+import WhyChooseMe from "@/components/home/WhyChooseMe";
 
 export const metadata = {
   title: "Jabed Ali Mollah | Full Stack MERN Developer",
@@ -12,6 +13,7 @@ export default function Home() {
     <main className="overflow-x-hidden">
       <Hero />
       <AboutPreview />
+      <WhyChooseMe />
     </main>
   );
 }
