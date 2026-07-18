@@ -6,7 +6,7 @@ import { motion } from "framer-motion";
 
 import { aboutPreviewData } from "@/data/home/aboutPreview";
 import { skills } from "@/data/skills";
-import { siteConfig } from "@/data/siteConfig";
+import { siteConfig } from "@/config/siteConfig";
 
 export default function AboutPreview() {
   return (

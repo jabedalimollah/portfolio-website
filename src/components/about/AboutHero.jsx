@@ -5,7 +5,7 @@ import Link from "next/link";
 import { Download, Mail } from "lucide-react";
 
 import { aboutHeroData } from "@/data/about/aboutHero";
-import { siteConfig } from "@/data/siteConfig";
+import { siteConfig } from "@/config/siteConfig";
 
 export default function AboutHero() {
   return (
@@ -101,7 +101,7 @@ export default function AboutHero() {
 
               <div className="relative overflow-hidden rounded-3xl border border-slate-200 bg-white shadow-xl">
                 <Image
-                  src={siteConfig.image}
+                  src={siteConfig.profileImage}
                   alt={aboutHeroData.imageAlt}
                   width={500}
                   height={600}

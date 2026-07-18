@@ -7,7 +7,7 @@ import { ArrowRight, Download, Mail } from "lucide-react";
 
 import { heroData } from "@/data/home/hero";
 import { socialLinks } from "@/data/socialLinks";
-import { siteConfig } from "@/data/siteConfig";
+import { siteConfig } from "@/config/siteConfig";
 
 export default function Hero() {
   return (
@@ -133,7 +133,7 @@ export default function Hero() {
           <div className="relative h-72 w-72 overflow-hidden rounded-xl bg-gradient-to-br from-blue-500 via-purple-500 to-cyan-500 p-1 shadow-2xl lg:h-[420px] lg:w-[420px]">
             <div className="relative h-full w-full overflow-hidden rounded-lg bg-slate-900">
               <Image
-                src={siteConfig.image}
+                src={siteConfig.profileImage}
                 alt={siteConfig.name}
                 fill
                 priority
