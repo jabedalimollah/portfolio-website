@@ -19,6 +19,9 @@ export default function ContactForm() {
     message: "",
   });
 
+  const [loading, setLoading] = useState(false);
+  const [status, setStatus] = useState("");
+
   const handleChange = (e) => {
     setFormData((prev) => ({
       ...prev,
@@ -26,21 +29,41 @@ export default function ContactForm() {
     }));
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
-    // Connect EmailJS / Resend / Backend API here
-    console.log(formData);
+    setLoading(true);
+    setStatus("");
 
-    alert("Message submitted successfully!");
+    try {
+      const response = await fetch(process.env.NEXT_PUBLIC_CONTACT_FORM, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+        body: JSON.stringify(formData),
+      });
 
-    setFormData({
-      name: "",
-      email: "",
-      phone: "",
-      subject: "",
-      message: "",
-    });
+      if (response.ok) {
+        setStatus("success");
+
+        setFormData({
+          name: "",
+          email: "",
+          phone: "",
+          subject: "",
+          message: "",
+        });
+      } else {
+        setStatus("error");
+      }
+    } catch (error) {
+      console.error(error);
+      setStatus("error");
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
@@ -63,15 +86,12 @@ export default function ContactForm() {
           </p>
         </div>
 
-        {/* Form */}
-
         <form
           onSubmit={handleSubmit}
           className="mt-14 rounded-3xl bg-white p-8 shadow-lg"
         >
           <div className="grid gap-6 md:grid-cols-2">
             {/* Name */}
-
             <div>
               <label
                 htmlFor="name"
@@ -97,7 +117,6 @@ export default function ContactForm() {
             </div>
 
             {/* Email */}
-
             <div>
               <label
                 htmlFor="email"
@@ -123,7 +142,6 @@ export default function ContactForm() {
             </div>
 
             {/* Phone */}
-
             <div>
               <label
                 htmlFor="phone"
@@ -148,7 +166,6 @@ export default function ContactForm() {
             </div>
 
             {/* Subject */}
-
             <div>
               <label
                 htmlFor="subject"
@@ -175,7 +192,6 @@ export default function ContactForm() {
           </div>
 
           {/* Message */}
-
           <div className="mt-6">
             <label
               htmlFor="message"
@@ -185,7 +201,7 @@ export default function ContactForm() {
             </label>
 
             <div className="relative">
-              <MdMessage className="absolute left-4 top-5 text-slate-400 text-xl" />
+              <MdMessage className="absolute left-4 top-5 text-xl text-slate-400" />
 
               <textarea
                 id="message"
@@ -200,14 +216,29 @@ export default function ContactForm() {
             </div>
           </div>
 
-          {/* Button */}
+          {/* Status */}
+          {status === "success" && (
+            <div className="mt-6 rounded-xl border border-green-200 bg-green-50 p-4 text-green-700">
+              ✅ Thank you! Your message has been sent successfully. I'll get
+              back to you soon.
+            </div>
+          )}
 
+          {status === "error" && (
+            <div className="mt-6 rounded-xl border border-red-200 bg-red-50 p-4 text-red-700">
+              ❌ Something went wrong. Please try again later.
+            </div>
+          )}
+
+          {/* Submit Button */}
           <button
             type="submit"
-            className="mt-8 inline-flex items-center rounded-xl bg-blue-600 px-8 py-3 font-semibold text-white transition hover:bg-blue-700"
+            disabled={loading}
+            className="mt-8 inline-flex items-center rounded-xl bg-blue-600 px-8 py-3 font-semibold text-white transition hover:bg-blue-700 disabled:cursor-not-allowed disabled:opacity-70"
           >
             <FaPaperPlane className="mr-2" />
-            Send Message
+
+            {loading ? "Sending..." : "Send Message"}
           </button>
         </form>
       </div>
