@@ -42,7 +42,7 @@ export default function Footer() {
             >
               {/* <Code2 className="text-blue-500" /> */}
               <Image
-                src="/logo/logo-512x512.png"
+                src="/logo/web-app-manifest-512x512.png"
                 alt="Jabed Ali Mollah Portfolio Logo"
                 width={40}
                 height={40}
