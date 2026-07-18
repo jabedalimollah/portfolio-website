@@ -4,6 +4,7 @@ import Education from "@/components/about/Education";
 import Skills from "@/components/about/Skills";
 import WhyWorkWithMe from "@/components/about/WhyWorkWithMe";
 import AboutCTA from "@/components/about/AboutCTA";
+import CertificateSection from "@/components/about/CertificateSection";
 
 export const metadata = {
   title: "About",
@@ -18,6 +19,7 @@ export default function AboutPage() {
       <MyStory />
       <Education />
       <Skills />
+      <CertificateSection />
       <WhyWorkWithMe />
       <AboutCTA />
     </main>
