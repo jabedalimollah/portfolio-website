@@ -17,5 +17,5 @@ export const siteConfig = {
 
   linkedin: "https://www.linkedin.com/in/jabedalimollah/",
 
-  website: "https://jabedalimollah.vercel.app",
+  website: "https://jabedali.vercel.app",
 };
