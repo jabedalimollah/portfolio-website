@@ -48,7 +48,7 @@ export default function Navbar() {
 
         <Link href="/" className="flex items-center gap-3">
           <Image
-            src="/logo/logo-512x512.png"
+            src="/logo/web-app-manifest-512x512.png"
             alt="Jabed Ali Mollah Portfolio Logo"
             width={45}
             height={45}
