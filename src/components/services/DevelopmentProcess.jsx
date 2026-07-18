@@ -1,83 +1,52 @@
-import {
-  FaComments,
-  FaClipboardList,
-  FaCode,
-  FaBug,
-  FaRocket,
-  FaHeadset,
-} from "react-icons/fa";
-
-const steps = [
-  {
-    icon: FaComments,
-    title: "Discussion",
-    description:
-      "Understanding your requirements, goals, and project scope before development begins.",
-  },
-  {
-    icon: FaClipboardList,
-    title: "Planning",
-    description:
-      "Creating the project structure, selecting technologies, and defining the development roadmap.",
-  },
-  {
-    icon: FaCode,
-    title: "Development",
-    description:
-      "Building responsive, scalable, and SEO-friendly web applications using modern technologies.",
-  },
-  {
-    icon: FaBug,
-    title: "Testing",
-    description:
-      "Testing functionality, responsiveness, accessibility, and performance across devices.",
-  },
-  {
-    icon: FaRocket,
-    title: "Deployment",
-    description:
-      "Deploying the application to production with optimized performance and SEO.",
-  },
-  {
-    icon: FaHeadset,
-    title: "Support",
-    description:
-      "Providing ongoing maintenance, improvements, and technical support after deployment.",
-  },
-];
+import { developmentProcessData } from "@/data/services/developmentProcess";
 
 export default function DevelopmentProcess() {
   return (
-    <section className="bg-slate-50 py-20">
+    <section
+      className="bg-slate-50 py-20"
+      aria-labelledby="development-process-heading"
+    >
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
+        {/* Heading */}
+
         <div className="mx-auto max-w-3xl text-center">
           <span className="rounded-full bg-blue-100 px-4 py-2 text-sm font-medium text-blue-700">
-            Development Process
+            {developmentProcessData.badge}
           </span>
 
-          <h2 className="mt-6 text-4xl font-bold text-slate-900">How I Work</h2>
+          <h2
+            id="development-process-heading"
+            className="mt-6 text-4xl font-bold text-slate-900"
+          >
+            {developmentProcessData.title}
+          </h2>
 
           <p className="mt-5 text-lg text-slate-600">
-            Every project follows a structured development process to ensure
-            quality, scalability, and long-term maintainability.
+            {developmentProcessData.description}
           </p>
         </div>
 
+        {/* Steps */}
+
         <div className="mt-16 grid gap-8 md:grid-cols-2 lg:grid-cols-3">
-          {steps.map((step) => (
-            <div
-              key={step.title}
-              className="rounded-2xl bg-white p-8 shadow-sm transition hover:-translate-y-2 hover:shadow-lg"
-            >
-              <step.icon className="text-5xl text-blue-600" />
+          {developmentProcessData.steps.map((step) => {
+            const Icon = step.icon;
 
-              <h3 className="mt-6 text-2xl font-semibold">{step.title}</h3>
+            return (
+              <article
+                key={step.title}
+                className="rounded-2xl bg-white p-8 shadow-sm transition hover:-translate-y-2 hover:shadow-lg"
+              >
+                <Icon className="text-5xl text-blue-600" />
 
-              <p className="mt-4 text-slate-600 leading-7">
-                {step.description}
-              </p>
-            </div>
-          ))}
+                <h3 className="mt-6 text-2xl font-semibold">{step.title}</h3>
+
+                <p className="mt-4 leading-7 text-slate-600">
+                  {step.description}
+                </p>
+              </article>
+            );
+          })}
         </div>
       </div>
     </section>

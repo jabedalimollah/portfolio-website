@@ -7,12 +7,17 @@ import { usePathname } from "next/navigation";
 import { HiMenuAlt3, HiX } from "react-icons/hi";
 import navLinks from "@/data/navLinks";
 import { GoArrowRight } from "react-icons/go";
+import { RiMoonClearLine } from "react-icons/ri";
+import { FiSun } from "react-icons/fi";
+import { useDispatch, useSelector } from "react-redux";
+import { toggleTheme } from "@/redux/features/themeSlice";
 export default function Navbar() {
   const pathname = usePathname();
 
   const [menuOpen, setMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
-
+  const theme = useSelector((state) => state.theme.darkMode);
+  const dispatch = useDispatch();
   useEffect(() => {
     const handleScroll = () => {
       setScrolled(window.scrollY > 20);
@@ -22,7 +27,9 @@ export default function Navbar() {
 
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
-
+  const themeChangeBtn = () => {
+    dispatch(toggleTheme());
+  };
   useEffect(() => {
     setMenuOpen(false);
   }, [pathname]);
@@ -73,13 +80,21 @@ export default function Navbar() {
         </ul>
 
         {/* Desktop Button */}
-
-        <Link
-          href="/contact"
-          className="hidden lg:flex items-center gap-x-2 rounded-lg bg-primarys button px-6 py-2 text-white transition hover:opacity-90 "
-        >
-          Hire Me <GoArrowRight />
-        </Link>
+        <div className={`flex gap-x-3`}>
+          {" "}
+          <button
+            onClick={themeChangeBtn}
+            className={`border-2 border-primary text-primary p-3 rounded-full`}
+          >
+            {theme ? <FiSun /> : <RiMoonClearLine />}
+          </button>
+          <Link
+            href="/contact"
+            className="hidden lg:flex items-center gap-x-2 rounded-lg bg-primarys button px-6 py-2 text-white transition hover:opacity-90 "
+          >
+            Hire Me <GoArrowRight />
+          </Link>
+        </div>
 
         {/* Mobile */}
 

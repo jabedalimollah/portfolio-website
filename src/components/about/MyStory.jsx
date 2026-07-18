@@ -1,50 +1,32 @@
-import { Code2, Lightbulb, Rocket } from "lucide-react";
-
-const journey = [
-  {
-    icon: Code2,
-    title: "My Beginning",
-    description:
-      "My journey into web development began with curiosity about how websites work. As I learned HTML, CSS, and JavaScript, I discovered a passion for creating interactive and user-friendly web applications.",
-  },
-  {
-    icon: Lightbulb,
-    title: "Continuous Learning",
-    description:
-      "I expanded my skills by learning React.js, Next.js, Node.js, Express.js, MongoDB, and modern development tools. I enjoy solving real-world problems and continuously improving my knowledge through hands-on projects.",
-  },
-  {
-    icon: Rocket,
-    title: "My Goal",
-    description:
-      "As a 2026 B.Tech Computer Science graduate, my goal is to join a forward-thinking team where I can contribute to impactful products, grow as a Full Stack MERN Developer, and deliver fast, scalable, and SEO-friendly web applications.",
-  },
-];
+import { myStoryData } from "@/data/about/story";
 
 export default function MyStory() {
   return (
-    <section className="bg-slate-50 py-20">
+    <section className="bg-slate-50 py-20" aria-labelledby="my-story-heading">
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
         {/* Heading */}
+
         <div className="mx-auto max-w-3xl text-center">
           <span className="rounded-full bg-blue-100 px-4 py-2 text-sm font-medium text-blue-700">
-            My Story
+            {myStoryData.badge}
           </span>
 
-          <h2 className="mt-6 text-3xl font-bold tracking-tight text-slate-900 md:text-4xl">
-            My Journey as a Full Stack Developer
+          <h2
+            id="my-story-heading"
+            className="mt-6 text-3xl font-bold tracking-tight text-slate-900 md:text-4xl"
+          >
+            {myStoryData.title}
           </h2>
 
           <p className="mt-6 text-lg leading-8 text-slate-600">
-            I believe continuous learning and practical experience are the keys
-            to becoming a great software developer. Every project I build helps
-            me improve my problem-solving skills and write better, cleaner code.
+            {myStoryData.description}
           </p>
         </div>
 
         {/* Cards */}
+
         <div className="mt-16 grid gap-8 md:grid-cols-3">
-          {journey.map((item) => {
+          {myStoryData.journey.map((item) => {
             const Icon = item.icon;
 
             return (

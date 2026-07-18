@@ -1,75 +1,32 @@
-import {
-  Code2,
-  Smartphone,
-  Gauge,
-  Search,
-  Layers3,
-  BookOpen,
-} from "lucide-react";
-
-const features = [
-  {
-    icon: Code2,
-    title: "Clean Code",
-    description:
-      "I write clean, maintainable, and reusable code following modern JavaScript and React best practices.",
-  },
-  {
-    icon: Smartphone,
-    title: "Responsive Design",
-    description:
-      "Every website is designed to work smoothly across mobile, tablet, laptop, and desktop devices.",
-  },
-  {
-    icon: Gauge,
-    title: "Performance Optimization",
-    description:
-      "I focus on fast-loading websites with optimized images, components, and efficient rendering.",
-  },
-  {
-    icon: Search,
-    title: "SEO-Friendly Development",
-    description:
-      "I build websites using semantic HTML, proper metadata, accessibility, and technical SEO best practices.",
-  },
-  {
-    icon: Layers3,
-    title: "Modern Tech Stack",
-    description:
-      "I develop applications using React.js, Next.js, Node.js, Express.js, MongoDB, and Tailwind CSS.",
-  },
-  {
-    icon: BookOpen,
-    title: "Continuous Learning",
-    description:
-      "Technology evolves every day, and I enjoy learning new tools, frameworks, and development practices.",
-  },
-];
+import { whyWorkWithMeData } from "@/data/about/whyWorkWithMe";
 
 export default function WhyWorkWithMe() {
   return (
-    <section className="bg-white py-20">
+    <section className="bg-white py-20" aria-labelledby="why-work-heading">
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
         {/* Heading */}
+
         <div className="mx-auto max-w-3xl text-center">
           <span className="inline-flex rounded-full bg-blue-100 px-4 py-2 text-sm font-medium text-blue-700">
-            Why Work With Me
+            {whyWorkWithMeData.badge}
           </span>
 
-          <h2 className="mt-6 text-3xl font-bold text-slate-900 md:text-4xl">
-            What Makes Me a Strong Developer
+          <h2
+            id="why-work-heading"
+            className="mt-6 text-3xl font-bold text-slate-900 md:text-4xl"
+          >
+            {whyWorkWithMeData.title}
           </h2>
 
           <p className="mt-5 text-lg leading-8 text-slate-600">
-            I focus on building modern, responsive, and high-performance web
-            applications while continuously improving my technical skills and
-            following industry best practices.
+            {whyWorkWithMeData.description}
           </p>
         </div>
 
-        {/* Cards */}
+        {/* Feature Cards */}
+
         <div className="mt-16 grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
-          {features.map((feature) => {
+          {whyWorkWithMeData.features.map((feature) => {
             const Icon = feature.icon;
 
             return (

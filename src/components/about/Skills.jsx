@@ -1,83 +1,38 @@
-import { Monitor, Server, Database, Wrench, Brain } from "lucide-react";
-
-const skillCategories = [
-  {
-    icon: Monitor,
-    title: "Frontend",
-    skills: [
-      "HTML5",
-      "CSS3",
-      "JavaScript (ES6+)",
-      "React.js",
-      "Next.js",
-      "Tailwind CSS",
-      "Bootstrap",
-      "Redux Toolkit",
-      "Shadcn UI",
-    ],
-  },
-  {
-    icon: Server,
-    title: "Backend",
-    skills: [
-      "Node.js",
-      "Express.js",
-      "REST API",
-      "JWT Authentication",
-      "Socket.io",
-    ],
-  },
-  {
-    icon: Database,
-    title: "Database",
-    skills: ["MongoDB", "Mongoose", "Cloudinary"],
-  },
-  {
-    icon: Wrench,
-    title: "Tools",
-    skills: ["Git", "GitHub", "VS Code", "Postman", "Vercel", "Render", "npm"],
-  },
-];
-
-const softSkills = [
-  "Problem Solving",
-  "Team Collaboration",
-  "Continuous Learning",
-  "Clean Code",
-  "Responsive Design",
-  "Performance Optimization",
-  "SEO Friendly Development",
-  "Time Management",
-];
+import { skillsData } from "@/data/about/skills";
 
 export default function Skills() {
+  const ProfessionalIcon = skillsData.professionalSkillIcon;
+
   return (
-    <section className="bg-slate-50 py-20">
+    <section className="bg-slate-50 py-20" aria-labelledby="skills-heading">
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
         {/* Heading */}
+
         <div className="mx-auto max-w-3xl text-center">
           <span className="inline-flex rounded-full bg-blue-100 px-4 py-2 text-sm font-medium text-blue-700">
-            Technical Skills
+            {skillsData.badge}
           </span>
 
-          <h2 className="mt-6 text-3xl font-bold text-slate-900 md:text-4xl">
-            Technologies I Work With
+          <h2
+            id="skills-heading"
+            className="mt-6 text-3xl font-bold text-slate-900 md:text-4xl"
+          >
+            {skillsData.title}
           </h2>
 
           <p className="mt-5 text-lg leading-8 text-slate-600">
-            I enjoy building modern, responsive, scalable, and SEO-friendly web
-            applications using the MERN stack and continuously expanding my
-            technical knowledge.
+            {skillsData.description}
           </p>
         </div>
 
         {/* Skill Categories */}
+
         <div className="mt-16 grid gap-8 md:grid-cols-2 xl:grid-cols-4">
-          {skillCategories.map((category) => {
+          {skillsData.categories.map((category) => {
             const Icon = category.icon;
 
             return (
-              <div
+              <article
                 key={category.title}
                 className="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm transition-all duration-300 hover:-translate-y-2 hover:shadow-lg"
               >
@@ -99,25 +54,26 @@ export default function Skills() {
                     </span>
                   ))}
                 </div>
-              </div>
+              </article>
             );
           })}
         </div>
 
-        {/* Soft Skills */}
-        <div className="mt-20 rounded-2xl border border-slate-200 bg-white p-8 shadow-sm">
+        {/* Professional Skills */}
+
+        <section className="mt-20 rounded-2xl border border-slate-200 bg-white p-8 shadow-sm">
           <div className="flex items-center gap-3">
             <div className="rounded-xl bg-blue-100 p-3">
-              <Brain className="h-6 w-6 text-blue-600" />
+              <ProfessionalIcon className="h-6 w-6 text-blue-600" />
             </div>
 
             <h3 className="text-2xl font-bold text-slate-900">
-              Professional Skills
+              {skillsData.professionalSkillTitle}
             </h3>
           </div>
 
           <div className="mt-8 flex flex-wrap gap-3">
-            {softSkills.map((skill) => (
+            {skillsData.professionalSkills.map((skill) => (
               <span
                 key={skill}
                 className="rounded-full border border-slate-200 bg-slate-50 px-4 py-2 text-sm font-medium text-slate-700 transition hover:border-blue-600 hover:bg-blue-600 hover:text-white"
@@ -126,7 +82,7 @@ export default function Skills() {
               </span>
             ))}
           </div>
-        </div>
+        </section>
       </div>
     </section>
   );

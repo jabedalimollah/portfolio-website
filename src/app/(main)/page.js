@@ -1,5 +1,5 @@
 import AboutPreview from "@/components/home/AboutPreview";
-import Hero from "../../components/home/Hero";
+import Hero from "@/components/home/Hero";
 import WhyChooseMe from "@/components/home/WhyChooseMe";
 
 export const metadata = {
