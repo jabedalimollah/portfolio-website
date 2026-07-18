@@ -5,7 +5,7 @@ import Image from "next/image";
 import { useState, useEffect } from "react";
 import { usePathname } from "next/navigation";
 import { HiMenuAlt3, HiX } from "react-icons/hi";
-import navLinks from "@/data/navLinks";
+import navLinks from "@/data/navbar/navLinks";
 import { GoArrowRight } from "react-icons/go";
 import { RiMoonClearLine } from "react-icons/ri";
 import { FiSun } from "react-icons/fi";
