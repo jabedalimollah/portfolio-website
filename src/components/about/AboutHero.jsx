@@ -101,7 +101,7 @@ export default function AboutHero() {
 
               <div className="relative overflow-hidden rounded-3xl border border-slate-200 bg-white shadow-xl">
                 <Image
-                  src={siteConfig.profileImage}
+                  src={siteConfig.myImage}
                   alt={aboutHeroData.imageAlt}
                   width={500}
                   height={600}
