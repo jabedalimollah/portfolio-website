@@ -1,5 +1,5 @@
 import BlogCard from "./BlogCard";
-import { blogPosts } from "@/data/blog";
+import { blogPosts } from "@/data/blog/blog";
 
 export default function BlogGrid() {
   const posts = blogPosts.filter((post) => !post.featured);

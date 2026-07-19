@@ -1,7 +1,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import { FaArrowRight } from "react-icons/fa";
-import { blogPosts } from "@/data/blog";
+import { blogPosts } from "@/data/blog/blog";
 
 export default function FeaturedPost() {
   const featured = blogPosts.find((post) => post.featured);

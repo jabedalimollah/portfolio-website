@@ -6,7 +6,7 @@ import { motion } from "framer-motion";
 import { useSelector } from "react-redux";
 
 import { aboutPreviewData } from "@/data/home/aboutPreview";
-import { skills } from "@/data/skills";
+import { skills } from "@/data/home/skills";
 import { siteConfig } from "@/config/siteConfig";
 
 export default function AboutPreview() {
