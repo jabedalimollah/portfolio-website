@@ -171,9 +171,9 @@ const projects = [
     project_info:
       "A responsive React portfolio website built to showcase projects, technical skills, education, services and contact information with a modern UI.",
 
-    live_link: "https://your-live-link.com",
+    live_link: "https://jabedalimollah.netlify.app/",
 
-    github_link: "https://github.com/jabedalimollah/react-portfolio",
+    github_link: "https://github.com/jabedalimollah/portfolio",
 
     video_link: "",
 
@@ -219,9 +219,9 @@ const projects = [
     project_info:
       "Contact Book helps users manage contacts efficiently with create, update, delete and search functionality using React.",
 
-    live_link: "https://your-live-link.com",
+    live_link: "https://contact-book-rose.vercel.app/",
 
-    github_link: "https://github.com/jabedalimollah/contact-book",
+    github_link: "https://github.com/jabedalimollah/Contact-book",
 
     video_link: "",
 
@@ -275,9 +275,9 @@ const projects = [
     project_info:
       "An online shopping website featuring product listings, shopping cart, category filters and responsive layouts.",
 
-    live_link: "https://your-live-link.com",
+    live_link: "https://estore-website.netlify.app/",
 
-    github_link: "https://github.com/jabedalimollah",
+    github_link: "https://github.com/jabedalimollah/estore",
 
     video_link: "",
 
@@ -330,9 +330,9 @@ const projects = [
     project_info:
       "A modern educational website created for students with responsive pages, clean design, reusable components and optimized performance.",
 
-    live_link: "https://your-live-link.com",
+    live_link: "https://students-website-omega.vercel.app/",
 
-    github_link: "https://github.com/jabedalimollah",
+    github_link: "https://github.com/jabedalimollah/students-website",
 
     video_link: "",
 
@@ -383,11 +383,10 @@ const projects = [
     project_info:
       "Notebook is a modern note management platform built using the MERN Stack. It enables users to securely create, organize, search, edit and export notes with an intuitive user experience.",
 
-    live_link: "https://your-live-link.com",
+    live_link: "https://notebook7.netlify.app/",
 
-    github_link: "https://github.com/jabedalimollah",
-
-    video_link: "",
+    github_link: "https://github.com/jabedalimollah/notebook",
+    video_link: "https://youtu.be/AZKxZ1CHnMg?si=6qnRm83q7sXj9D9x",
 
     features: [
       "JWT Authentication",
@@ -458,11 +457,11 @@ const projects = [
     project_info:
       "Chatit provides real-time messaging, secure authentication, media sharing and AI-powered conversations.",
 
-    live_link: "https://your-live-link.com",
+    live_link: "https://chatit7.netlify.app/",
 
-    github_link: "https://github.com/jabedalimollah",
+    github_link: "https://github.com/jabedalimollah/chatit",
 
-    video_link: "",
+    video_link: "https://youtu.be/FyVyh1ebb8U?si=UrflRI-Tufg6asgA",
 
     features: [
       "Real-time Chat",
@@ -547,10 +546,9 @@ const projects = [
 
     live_link: "",
 
-    github_link: "https://github.com/jabedalimollah",
+    github_link: "https://github.com/jabedalimollah/aliet",
 
     video_link: "https://youtu.be/pdyayBR9mLI?si=tQbXg8tOTe7wEY9u",
-
     features: [
       "Authentication",
       "Create Posts",
