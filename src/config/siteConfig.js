@@ -40,6 +40,10 @@ export const siteConfig = {
   keywords: [
     "Jabed Ali Mollah",
     "Jabed Ali",
+    "Jabed Ali Mollah Portfolio",
+    "Jabed Ali Portfolio",
+    "Jabed Portfolio",
+    "Portfolio Website",
     "MERN Stack Developer",
     "Full Stack Developer",
     "React Developer",
@@ -79,9 +83,9 @@ export const siteConfig = {
   profileImage: "/images/my_photos/profile.webp",
   myImage: "/images/my_photos/jabed-ali-mollah.webp",
 
-  ogImage: "/images/seo/og-image.png",
+  ogImage: "/images/seo/og-image.webp",
 
-  twitterImage: "/images/seo/twitter-image.png",
+  twitterImage: "images/seo/twitter-image.webp",
 
   favicon: "/favicon.ico",
 
