@@ -5,19 +5,23 @@ import Image from "next/image";
 import { useState, useEffect } from "react";
 import { usePathname } from "next/navigation";
 import { HiMenuAlt3, HiX } from "react-icons/hi";
-import navLinks from "@/data/navbar/navLinks";
 import { GoArrowRight } from "react-icons/go";
 import { RiMoonClearLine } from "react-icons/ri";
 import { FiSun } from "react-icons/fi";
 import { useDispatch, useSelector } from "react-redux";
+
+import navLinks from "@/data/navbar/navLinks";
 import { toggleTheme } from "@/redux/features/themeSlice";
+
 export default function Navbar() {
   const pathname = usePathname();
 
   const [menuOpen, setMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+
   const theme = useSelector((state) => state.theme.darkMode);
   const dispatch = useDispatch();
+
   useEffect(() => {
     const handleScroll = () => {
       setScrolled(window.scrollY > 20);
@@ -27,17 +31,25 @@ export default function Navbar() {
 
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
-  const themeChangeBtn = () => {
-    dispatch(toggleTheme());
-  };
+
   useEffect(() => {
     setMenuOpen(false);
   }, [pathname]);
 
+  const themeChangeBtn = () => {
+    dispatch(toggleTheme());
+  };
+
   return (
     <header
       className={`sticky top-0 z-50 transition-all duration-300 ${
-        scrolled ? "bg-white/90 backdrop-blur-lg shadow-md" : "bg-white"
+        scrolled
+          ? theme
+            ? "bg-slate-900/90 backdrop-blur-lg shadow-lg"
+            : "bg-white/90 backdrop-blur-lg shadow-md"
+          : theme
+            ? "bg-slate-950"
+            : "bg-white"
       }`}
     >
       <nav
@@ -45,7 +57,6 @@ export default function Navbar() {
         aria-label="Primary Navigation"
       >
         {/* Logo */}
-
         <Link href="/" className="flex items-center gap-3">
           <Image
             src="/logo/web-app-manifest-512x512.png"
@@ -53,25 +64,40 @@ export default function Navbar() {
             width={45}
             height={45}
             priority
-            // className="h-auto w-32 md:w-40 lg:w-44"
           />
 
-          {/* <span className="hidden text-xl font-bold text-[#8855FF] sm:block"> */}
-          <div className={`flex flex-col gap-0`}>
-            <span className={`font-bold p-0 h-5 `}>Jabed Ali</span>
-            <span className={`text-sm p-0`}>Web Developer</span>
+          <div className="flex flex-col">
+            <span
+              className={`h-5 font-bold ${
+                theme ? "text-white" : "text-slate-900"
+              }`}
+            >
+              Jabed Ali
+            </span>
+
+            <span
+              className={`text-sm ${
+                theme ? "text-slate-400" : "text-slate-600"
+              }`}
+            >
+              Web Developer
+            </span>
           </div>
         </Link>
 
-        {/* Desktop */}
-
+        {/* Desktop Menu */}
         <ul className="hidden items-center gap-8 lg:flex">
           {navLinks.map((item) => (
             <li key={item.id}>
               <Link
                 href={item.href}
-                className={`font-medium transition hover:text-[#8855FF]
-                ${pathname === item.href ? "text-[#8855FF]" : "text-gray-700"}`}
+                className={`font-medium transition-colors duration-300 hover:text-primary ${
+                  pathname === item.href
+                    ? "text-primary"
+                    : theme
+                      ? "text-slate-300"
+                      : "text-slate-700"
+                }`}
               >
                 {item.title}
               </Link>
@@ -79,49 +105,59 @@ export default function Navbar() {
           ))}
         </ul>
 
-        {/* Desktop Button */}
-        <div className={`flex gap-x-3`}>
-          {" "}
+        {/* Right Buttons */}
+        <div className="flex items-center gap-3">
           <button
             onClick={themeChangeBtn}
-            className={`border-2 border-primary text-primary p-3 rounded-full`}
+            aria-label="Toggle Theme"
+            className="rounded-full border-0 md:border-2 border-primary p-3 text-primary transition hover:bg-primary hover:text-white"
           >
-            {theme ? <FiSun /> : <RiMoonClearLine />}
+            {theme ? <FiSun size={18} /> : <RiMoonClearLine size={18} />}
           </button>
+
           <Link
             href="/contact"
-            className="hidden lg:flex items-center gap-x-2 rounded-lg bg-primarys button px-6 py-2 text-white transition hover:opacity-90 "
+            className="button hidden items-center gap-2 rounded-lg px-6 py-2 text-white transition hover:opacity-90 lg:flex"
           >
-            Hire Me <GoArrowRight />
+            Hire Me
+            <GoArrowRight />
           </Link>
+
+          {/* Mobile Toggle */}
+          <button
+            onClick={() => setMenuOpen(!menuOpen)}
+            className="text-3xl text-primary lg:hidden"
+            aria-label="Toggle Menu"
+          >
+            {menuOpen ? <HiX /> : <HiMenuAlt3 />}
+          </button>
         </div>
-
-        {/* Mobile */}
-
-        <button
-          onClick={() => setMenuOpen(!menuOpen)}
-          className="text-3xl text-[#8855FF] lg:hidden"
-          aria-label="Toggle Menu"
-        >
-          {menuOpen ? <HiX /> : <HiMenuAlt3 />}
-        </button>
       </nav>
 
       {/* Mobile Menu */}
-
       <div
         className={`overflow-hidden transition-all duration-300 lg:hidden ${
           menuOpen ? "max-h-[500px]" : "max-h-0"
         }`}
       >
-        <div className="border-t bg-white px-6 py-5">
+        <div
+          className={`border-t px-6 py-5 ${
+            theme
+              ? "border-slate-800 bg-slate-950"
+              : "border-slate-200 bg-white"
+          }`}
+        >
           <ul className="space-y-5">
             {navLinks.map((item) => (
               <li key={item.id}>
                 <Link
                   href={item.href}
-                  className={`block text-lg font-medium ${
-                    pathname === item.href ? "text-[#8855FF]" : "text-gray-700"
+                  className={`block text-lg font-medium transition ${
+                    pathname === item.href
+                      ? "text-primary"
+                      : theme
+                        ? "text-slate-300"
+                        : "text-slate-700"
                   }`}
                 >
                   {item.title}
@@ -132,7 +168,7 @@ export default function Navbar() {
 
           <Link
             href="/contact"
-            className="mt-6 block rounded-xl bg-[#8855FF] py-3 text-center font-medium text-white"
+            className="button mt-6 block rounded-xl py-3 text-center font-medium text-white"
           >
             Hire Me
           </Link>

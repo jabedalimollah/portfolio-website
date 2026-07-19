@@ -8,10 +8,17 @@ import { ArrowRight, Download, Mail } from "lucide-react";
 import { heroData } from "@/data/home/hero";
 import { socialLinks } from "@/data/socialLinks";
 import { siteConfig } from "@/config/siteConfig";
+import { useSelector } from "react-redux";
 
 export default function Hero() {
+  const theme = useSelector((state) => state.theme.darkMode);
+
   return (
-    <section className="relative overflow-hidden">
+    <section
+      className={`relative overflow-hidden transition-colors duration-300 ${
+        theme ? "bg-slate-950" : "bg-white"
+      }`}
+    >
       {/* Background */}
       <div className="absolute inset-0 -z-10">
         <div className="absolute left-0 top-0 h-72 w-72 rounded-full bg-blue-500/20 blur-3xl" />
@@ -23,7 +30,7 @@ export default function Hero() {
         {/* Left */}
         <motion.div
           initial={{ opacity: 0, x: -40 }}
-          animate={{ opacity: 1, x: 0 }}
+          animate={{ opacity: 0.999, x: 0 }}
           transition={{ duration: 0.7 }}
           className="max-w-2xl text-center lg:text-left"
         >
@@ -54,7 +61,11 @@ export default function Hero() {
           </div>
 
           {/* Heading */}
-          <h1 className="mt-6 text-4xl font-black tracking-tight text-slate-700 sm:text-5xl lg:text-7xl">
+          <h1
+            className={`mt-6 text-4xl font-black tracking-tight sm:text-5xl lg:text-7xl ${
+              theme ? "text-white" : "text-slate-700"
+            }`}
+          >
             {heroData.title}
             <br />
 
@@ -64,12 +75,20 @@ export default function Hero() {
           </h1>
 
           {/* Role */}
-          <h2 className="mt-5 text-xl font-semibold text-slate-500 sm:text-2xl">
+          <h2
+            className={`mt-5 text-xl font-semibold sm:text-2xl ${
+              theme ? "text-slate-300" : "text-slate-500"
+            }`}
+          >
             {heroData.role}
           </h2>
 
           {/* Description */}
-          <p className="mt-6 text-base leading-8 text-slate-500 sm:text-lg">
+          <p
+            className={`mt-6 text-base leading-8 sm:text-lg ${
+              theme ? "text-slate-400" : "text-slate-500"
+            }`}
+          >
             {heroData.description}
           </p>
 
@@ -87,7 +106,11 @@ export default function Hero() {
               href={siteConfig.resume}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 rounded-xl border border-slate-700 px-6 py-3 font-semibold text-slate-700 transition hover:border-primary hover:text-primary"
+              className={`inline-flex items-center gap-2 rounded-xl border px-6 py-3 font-semibold transition ${
+                theme
+                  ? "border-slate-600 text-white hover:border-primary hover:text-primary"
+                  : "border-slate-700 text-slate-700 hover:border-primary hover:text-primary"
+              }`}
             >
               <Download size={18} />
               {heroData.secondaryButton.text}
@@ -100,7 +123,11 @@ export default function Hero() {
               href={siteConfig.github}
               target="_blank"
               rel="noopener noreferrer"
-              className="rounded-full border border-slate-700 p-3 transition hover:border-blue-600 hover:text-blue-600"
+              className={`rounded-full border p-3 transition ${
+                theme
+                  ? "border-slate-600 text-white hover:border-blue-500 hover:text-blue-500"
+                  : "border-slate-700 text-slate-700 hover:border-blue-600 hover:text-blue-600"
+              }`}
             >
               GitHub
             </a>
@@ -109,20 +136,27 @@ export default function Hero() {
               href={siteConfig.linkedin}
               target="_blank"
               rel="noopener noreferrer"
-              className="rounded-full border border-slate-700 p-3 transition hover:border-blue-600 hover:text-blue-600"
+              className={`rounded-full border p-3 transition ${
+                theme
+                  ? "border-slate-600 text-white hover:border-blue-500 hover:text-blue-500"
+                  : "border-slate-700 text-slate-700 hover:border-blue-600 hover:text-blue-600"
+              }`}
             >
               LinkedIn
             </a>
 
             <a
               href={`mailto:${siteConfig.email}`}
-              className="rounded-full border border-slate-700 p-3 transition hover:border-blue-600 hover:text-blue-600"
+              className={`rounded-full border p-3 transition ${
+                theme
+                  ? "border-slate-600 text-white hover:border-blue-500 hover:text-blue-500"
+                  : "border-slate-700 text-slate-700 hover:border-blue-600 hover:text-blue-600"
+              }`}
             >
               <Mail size={20} />
             </a>
           </div>
         </motion.div>
-
         {/* Right */}
         <motion.div
           initial={{ opacity: 0, scale: 0.85 }}
@@ -131,7 +165,11 @@ export default function Hero() {
           className="relative"
         >
           <div className="relative h-72 w-72 overflow-hidden rounded-xl bg-gradient-to-br from-blue-500 via-purple-500 to-cyan-500 p-1 shadow-2xl lg:h-[420px] lg:w-[420px]">
-            <div className="relative h-full w-full overflow-hidden rounded-lg bg-slate-900">
+            <div
+              className={`relative h-full w-full overflow-hidden rounded-lg ${
+                theme ? "bg-slate-900" : "bg-white"
+              }`}
+            >
               <Image
                 src={siteConfig.profileImage}
                 alt={siteConfig.name}
@@ -147,9 +185,20 @@ export default function Hero() {
           <motion.div
             animate={{ y: [0, -10, 0] }}
             transition={{ duration: 4, repeat: Infinity }}
-            className="absolute -left-8 top-8 rounded-xl border border-slate-200 bg-white/80 px-4 py-3 shadow-xl backdrop-blur"
+            className={`absolute -left-8 top-8 rounded-xl border px-4 py-3 shadow-xl backdrop-blur ${
+              theme
+                ? "border-slate-700 bg-slate-900/80 text-white"
+                : "border-slate-200 bg-white/80 text-slate-900"
+            }`}
           >
-            <p className="text-xs text-slate-500">Experience</p>
+            <p
+              className={`text-xs ${
+                theme ? "text-slate-400" : "text-slate-500"
+              }`}
+            >
+              Experience
+            </p>
+
             <p className="font-bold">{heroData.experience}</p>
           </motion.div>
 
@@ -157,9 +206,20 @@ export default function Hero() {
           <motion.div
             animate={{ y: [0, 10, 0] }}
             transition={{ duration: 5, repeat: Infinity }}
-            className="absolute -right-8 bottom-10 rounded-xl border border-slate-200 bg-white/80 px-4 py-3 shadow-xl backdrop-blur"
+            className={`absolute -right-8 bottom-10 rounded-xl border px-4 py-3 shadow-xl backdrop-blur ${
+              theme
+                ? "border-slate-700 bg-slate-900/80 text-white"
+                : "border-slate-200 bg-white/80 text-slate-900"
+            }`}
           >
-            <p className="text-xs text-slate-500">Projects</p>
+            <p
+              className={`text-xs ${
+                theme ? "text-slate-400" : "text-slate-500"
+              }`}
+            >
+              Projects
+            </p>
+
             <p className="font-bold">{heroData.projects}</p>
           </motion.div>
         </motion.div>

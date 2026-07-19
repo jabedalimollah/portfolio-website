@@ -1,9 +1,14 @@
+"use client";
+
 import Image from "next/image";
 import Link from "next/link";
+import { useSelector } from "react-redux";
 import { FaGithub, FaExternalLinkAlt, FaStar } from "react-icons/fa";
 import { IoArrowBack } from "react-icons/io5";
 
 export default function ProjectHero({ project }) {
+  const theme = useSelector((state) => state.theme.darkMode);
+
   // Combine all technologies into one array
   const technologies = [
     ...(project.tech_stack?.frontend || []),
@@ -12,10 +17,25 @@ export default function ProjectHero({ project }) {
   ];
 
   return (
-    <section className="relative overflow-hidden bg-gradient-to-br from-slate-50 via-white to-blue-50 py-16 lg:py-24">
+    <section
+      className={`relative overflow-hidden py-16 lg:py-24 ${
+        theme
+          ? "bg-gradient-to-br from-slate-950 via-slate-900 to-slate-950"
+          : "bg-gradient-to-br from-slate-50 via-white to-blue-50"
+      }`}
+    >
       {/* Background */}
-      <div className="absolute -top-40 -right-40 h-96 w-96 rounded-full bg-blue-200/30 blur-3xl"></div>
-      <div className="absolute -bottom-40 -left-40 h-96 w-96 rounded-full bg-indigo-200/30 blur-3xl"></div>
+      <div
+        className={`absolute -top-40 -right-40 h-96 w-96 rounded-full blur-3xl ${
+          theme ? "bg-blue-600/20" : "bg-blue-200/30"
+        }`}
+      ></div>
+
+      <div
+        className={`absolute -bottom-40 -left-40 h-96 w-96 rounded-full blur-3xl ${
+          theme ? "bg-indigo-600/20" : "bg-indigo-200/30"
+        }`}
+      ></div>
 
       <div className="relative mx-auto max-w-7xl px-6 lg:px-8">
         {/* Back Button */}
@@ -43,11 +63,19 @@ export default function ProjectHero({ project }) {
               )}
             </div>
 
-            <h1 className="mt-6 text-4xl font-bold leading-tight text-slate-900 md:text-5xl">
+            <h1
+              className={`mt-6 text-4xl font-bold leading-tight md:text-5xl ${
+                theme ? "text-white" : "text-slate-900"
+              }`}
+            >
               {project.title}
             </h1>
 
-            <p className="mt-6 text-lg leading-8 text-slate-600">
+            <p
+              className={`mt-6 text-lg leading-8 ${
+                theme ? "text-slate-300" : "text-slate-600"
+              }`}
+            >
               {project.description}
             </p>
 
@@ -56,7 +84,11 @@ export default function ProjectHero({ project }) {
               {technologies.map((tech) => (
                 <span
                   key={tech}
-                  className="rounded-full bg-slate-100 px-4 py-2 text-sm font-medium text-slate-700"
+                  className={`rounded-full px-4 py-2 text-sm font-medium transition ${
+                    theme
+                      ? "bg-slate-800 text-slate-200 hover:bg-blue-600 hover:text-white"
+                      : "bg-slate-100 text-slate-700 hover:bg-blue-100 hover:text-blue-700"
+                  }`}
                 >
                   {tech}
                 </span>
@@ -82,7 +114,11 @@ export default function ProjectHero({ project }) {
                   href={project.github_link}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center rounded-xl border border-slate-300 px-6 py-3 font-semibold text-slate-700 transition hover:border-blue-600 hover:text-blue-600"
+                  className={`inline-flex items-center rounded-xl border px-6 py-3 font-semibold transition ${
+                    theme
+                      ? "border-slate-600 text-slate-300 hover:border-blue-500 hover:text-blue-400"
+                      : "border-slate-300 text-slate-700 hover:border-blue-600 hover:text-blue-600"
+                  }`}
                 >
                   <FaGithub className="mr-2" />
                   GitHub
@@ -93,7 +129,13 @@ export default function ProjectHero({ project }) {
 
           {/* Right */}
           <div>
-            <div className="overflow-hidden rounded-3xl border border-slate-200 bg-white shadow-xl">
+            <div
+              className={`overflow-hidden rounded-3xl border shadow-xl ${
+                theme
+                  ? "border-slate-700 bg-slate-900"
+                  : "border-slate-200 bg-white"
+              }`}
+            >
               <Image
                 src={project.image}
                 alt={project.title}

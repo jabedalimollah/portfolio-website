@@ -1,29 +1,51 @@
+"use client";
+
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
+import { useSelector } from "react-redux";
 
 import projects from "@/data/projects/projectsData";
 import { featuredProjectsData } from "@/data/projects/featuredProjectsData";
 import ProjectCard from "./ProjectCard";
 
 export default function FeaturedProjects() {
+  const theme = useSelector((state) => state.theme.darkMode);
+
   const featuredProjects = projects
     .filter((project) => project.featured)
     .sort((a, b) => b.id - a.id);
 
   return (
-    <section id="featured-projects" className="bg-white py-20">
+    <section
+      id="featured-projects"
+      className={`py-20 ${theme ? "bg-slate-950" : "bg-white"}`}
+    >
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
         {/* Heading */}
         <div className="mx-auto max-w-3xl text-center">
-          <span className="inline-flex rounded-full bg-blue-100 px-4 py-2 text-sm font-medium text-blue-700">
+          <span
+            className={`inline-flex rounded-full px-4 py-2 text-sm font-medium ${
+              theme
+                ? "bg-blue-500/20 text-blue-400"
+                : "bg-blue-100 text-blue-700"
+            }`}
+          >
             {featuredProjectsData.badge}
           </span>
 
-          <h2 className="mt-6 text-3xl font-bold text-slate-900 md:text-4xl">
+          <h2
+            className={`mt-6 text-3xl font-bold md:text-4xl ${
+              theme ? "text-white" : "text-slate-900"
+            }`}
+          >
             {featuredProjectsData.title}
           </h2>
 
-          <p className="mt-5 text-lg leading-8 text-slate-600">
+          <p
+            className={`mt-5 text-lg leading-8 ${
+              theme ? "text-slate-300" : "text-slate-600"
+            }`}
+          >
             {featuredProjectsData.description}
           </p>
         </div>

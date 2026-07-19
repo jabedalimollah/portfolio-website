@@ -1,8 +1,17 @@
+"use client";
+
 import Image from "next/image";
+import { useSelector } from "react-redux";
 
 export default function CertificateCard({ certificate }) {
+  const theme = useSelector((state) => state.theme.darkMode);
+
   return (
-    <div className="group overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-md transition duration-300 hover:-translate-y-2 hover:shadow-xl">
+    <div
+      className={`group overflow-hidden rounded-2xl border shadow-md transition duration-300 hover:-translate-y-2 hover:shadow-xl ${
+        theme ? "border-slate-700 bg-slate-900" : "border-slate-200 bg-white"
+      }`}
+    >
       <div className="overflow-hidden">
         <Image
           src={certificate.image}
@@ -14,11 +23,17 @@ export default function CertificateCard({ certificate }) {
       </div>
 
       <div className="p-6">
-        <h3 className="text-lg font-bold text-slate-900">
+        <h3
+          className={`text-lg font-bold ${
+            theme ? "text-white" : "text-slate-900"
+          }`}
+        >
           {certificate.title}
         </h3>
 
-        <p className="mt-2 text-slate-500">{certificate.organization}</p>
+        <p className={`mt-2 ${theme ? "text-slate-400" : "text-slate-500"}`}>
+          {certificate.organization}
+        </p>
 
         <a
           href={certificate.image}

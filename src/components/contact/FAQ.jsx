@@ -1,6 +1,8 @@
 "use client";
 
 import { useState } from "react";
+import { useSelector } from "react-redux";
+
 import { FaChevronDown, FaChevronUp } from "react-icons/fa";
 
 const faqs = [
@@ -32,44 +34,90 @@ const faqs = [
 ];
 
 export default function FAQ() {
+  const theme = useSelector((state) => state.theme.darkMode);
+
   const [openIndex, setOpenIndex] = useState(0);
 
   return (
-    <section className="bg-white py-20">
+    <section
+      className={`py-20 transition-colors duration-300 ${
+        theme ? "bg-slate-950" : "bg-white"
+      }`}
+    >
       <div className="mx-auto max-w-4xl px-6 lg:px-8">
+        {/* Heading */}
+
         <div className="text-center">
-          <span className="inline-flex rounded-full bg-blue-100 px-4 py-2 text-sm font-medium text-blue-700">
+          <span
+            className={`inline-flex rounded-full px-4 py-2 text-sm font-medium ${
+              theme
+                ? "bg-blue-900/40 text-blue-400"
+                : "bg-blue-100 text-blue-700"
+            }`}
+          >
             Frequently Asked Questions
           </span>
 
-          <h2 className="mt-6 text-3xl font-bold text-slate-900 md:text-4xl">
+          <h2
+            className={`mt-6 text-3xl font-bold md:text-4xl ${
+              theme ? "text-white" : "text-slate-900"
+            }`}
+          >
             Have Questions?
           </h2>
 
-          <p className="mt-5 text-lg text-slate-600">
+          <p
+            className={`mt-5 text-lg ${
+              theme ? "text-slate-400" : "text-slate-600"
+            }`}
+          >
             Here are answers to some common questions about working with me.
           </p>
         </div>
+
+        {/* FAQ Items */}
 
         <div className="mt-12 space-y-4">
           {faqs.map((faq, index) => (
             <div
               key={index}
-              className="overflow-hidden rounded-2xl border border-slate-200"
+              className={`overflow-hidden rounded-2xl border transition-colors duration-300 ${
+                theme
+                  ? "border-slate-700 bg-slate-900"
+                  : "border-slate-200 bg-white"
+              }`}
             >
               <button
                 onClick={() => setOpenIndex(openIndex === index ? -1 : index)}
                 className="flex w-full items-center justify-between p-6 text-left"
               >
-                <span className="font-semibold text-slate-900">
+                <span
+                  className={`font-semibold ${
+                    theme ? "text-white" : "text-slate-900"
+                  }`}
+                >
                   {faq.question}
                 </span>
 
-                {openIndex === index ? <FaChevronUp /> : <FaChevronDown />}
+                {openIndex === index ? (
+                  <FaChevronUp
+                    className={theme ? "text-blue-400" : "text-slate-700"}
+                  />
+                ) : (
+                  <FaChevronDown
+                    className={theme ? "text-slate-400" : "text-slate-700"}
+                  />
+                )}
               </button>
 
               {openIndex === index && (
-                <div className="border-t border-slate-200 px-6 py-5 text-slate-600">
+                <div
+                  className={`border-t px-6 py-5 transition-colors duration-300 ${
+                    theme
+                      ? "border-slate-700 text-slate-400"
+                      : "border-slate-200 text-slate-600"
+                  }`}
+                >
                   {faq.answer}
                 </div>
               )}

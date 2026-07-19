@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion";
 import { Code2, Smartphone, Zap, SearchCheck } from "lucide-react";
+import { useSelector } from "react-redux";
 
 const features = [
   {
@@ -31,8 +32,13 @@ const features = [
 ];
 
 export default function WhyChooseMe() {
+  const theme = useSelector((state) => state.theme.darkMode);
+
   return (
-    <section id="why-choose-me" className="bg-slate-50 py-20">
+    <section
+      id="why-choose-me"
+      className={`${theme ? "bg-slate-950" : "bg-slate-50"} py-20`}
+    >
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
         {/* Heading */}
         <motion.div
@@ -42,15 +48,29 @@ export default function WhyChooseMe() {
           transition={{ duration: 0.6 }}
           className="mx-auto mb-16 max-w-3xl text-center"
         >
-          <span className="rounded-full bg-blue-100 px-4 py-2 text-sm font-semibold text-blue-700 ">
+          <span
+            className={`rounded-full px-4 py-2 text-sm font-semibold ${
+              theme
+                ? "bg-blue-500/20 text-blue-400"
+                : "bg-blue-100 text-blue-700"
+            }`}
+          >
             Why Choose Me
           </span>
 
-          <h2 className="mt-6 text-3xl font-bold text-slate-900  sm:text-4xl">
+          <h2
+            className={`mt-6 text-3xl font-bold sm:text-4xl ${
+              theme ? "text-white" : "text-slate-900"
+            }`}
+          >
             Building High-Quality Digital Experiences
           </h2>
 
-          <p className="mt-6 text-lg leading-8 text-slate-600 ">
+          <p
+            className={`mt-6 text-lg leading-8 ${
+              theme ? "text-slate-400" : "text-slate-600"
+            }`}
+          >
             I focus on creating modern, responsive, accessible and
             high-performance web applications that provide a great user
             experience and are easy to maintain.
@@ -72,17 +92,37 @@ export default function WhyChooseMe() {
                   duration: 0.5,
                   delay: index * 0.1,
                 }}
-                className="group rounded-3xl border border-slate-200 bg-white p-8 shadow-sm transition-all duration-300 hover:-translate-y-2 hover:border-blue-500 hover:shadow-xl "
+                className={`group rounded-3xl border p-8 shadow-sm transition-all duration-300 hover:-translate-y-2 hover:border-blue-500 hover:shadow-xl ${
+                  theme
+                    ? "border-slate-800 bg-slate-900"
+                    : "border-slate-200 bg-white"
+                }`}
               >
-                <div className="mb-6 inline-flex rounded-2xl bg-blue-100 p-4 transition-colors group-hover:bg-blue-600 ">
-                  <Icon className="h-8 w-8 text-blue-600 transition-colors group-hover:text-white " />
+                <div
+                  className={`mb-6 inline-flex rounded-2xl p-4 transition-colors group-hover:bg-blue-600 ${
+                    theme ? "bg-blue-500/20" : "bg-blue-100"
+                  }`}
+                >
+                  <Icon
+                    className={`h-8 w-8 transition-colors group-hover:text-white ${
+                      theme ? "text-blue-400" : "text-blue-600"
+                    }`}
+                  />
                 </div>
 
-                <h3 className="text-xl font-semibold text-slate-900 ">
+                <h3
+                  className={`text-xl font-semibold ${
+                    theme ? "text-white" : "text-slate-900"
+                  }`}
+                >
                   {feature.title}
                 </h3>
 
-                <p className="mt-4 leading-7 text-slate-600 ">
+                <p
+                  className={`mt-4 leading-7 ${
+                    theme ? "text-slate-400" : "text-slate-600"
+                  }`}
+                >
                   {feature.description}
                 </p>
               </motion.div>

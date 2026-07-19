@@ -3,14 +3,17 @@
 import Image from "next/image";
 import Link from "next/link";
 import { Download, Mail } from "lucide-react";
+import { useSelector } from "react-redux";
 
 import { aboutHeroData } from "@/data/about/aboutHero";
 import { siteConfig } from "@/config/siteConfig";
 
 export default function AboutHero() {
+  const theme = useSelector((state) => state.theme.darkMode);
+
   return (
     <section
-      className="bg-white py-6 lg:py-10"
+      className={`${theme ? "bg-slate-950" : "bg-white"} py-6 lg:py-10`}
       aria-labelledby="about-hero-heading"
     >
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
@@ -18,13 +21,21 @@ export default function AboutHero() {
           {/* Left */}
 
           <div>
-            <span className="inline-flex rounded-full border border-blue-200 bg-blue-50 px-4 py-2 text-sm font-medium text-blue-700">
+            <span
+              className={`inline-flex rounded-full border px-4 py-2 text-sm font-medium ${
+                theme
+                  ? "border-blue-500/30 bg-blue-500/20 text-blue-400"
+                  : "border-blue-200 bg-blue-50 text-blue-700"
+              }`}
+            >
               {aboutHeroData.badge}
             </span>
 
             <h1
               id="about-hero-heading"
-              className="mt-6 text-4xl font-bold leading-tight text-slate-900 md:text-5xl lg:text-6xl"
+              className={`mt-6 text-4xl font-bold leading-tight md:text-5xl lg:text-6xl ${
+                theme ? "text-white" : "text-slate-900"
+              }`}
             >
               {aboutHeroData.title}
 
@@ -33,11 +44,19 @@ export default function AboutHero() {
               </span>
             </h1>
 
-            <p className="mt-6 text-lg leading-8 text-slate-600">
+            <p
+              className={`mt-6 text-lg leading-8 ${
+                theme ? "text-slate-400" : "text-slate-600"
+              }`}
+            >
               {aboutHeroData.description1}
             </p>
 
-            <p className="mt-4 text-lg leading-8 text-slate-600">
+            <p
+              className={`mt-4 text-lg leading-8 ${
+                theme ? "text-slate-400" : "text-slate-600"
+              }`}
+            >
               {aboutHeroData.description2}
             </p>
 
@@ -50,16 +69,32 @@ export default function AboutHero() {
                 return (
                   <div
                     key={item.title}
-                    className="flex items-center gap-3 rounded-xl border border-slate-200 p-4 transition hover:border-blue-500 hover:shadow-md"
+                    className={`flex items-center gap-3 rounded-xl border p-4 transition hover:border-blue-500 hover:shadow-md ${
+                      theme
+                        ? "border-slate-800 bg-slate-900"
+                        : "border-slate-200 bg-white"
+                    }`}
                   >
-                    <Icon className="h-6 w-6 text-blue-600" />
+                    <Icon
+                      className={`h-6 w-6 ${
+                        theme ? "text-blue-400" : "text-blue-600"
+                      }`}
+                    />
 
                     <div>
-                      <p className="font-semibold text-slate-900">
+                      <p
+                        className={`font-semibold ${
+                          theme ? "text-white" : "text-slate-900"
+                        }`}
+                      >
                         {item.title}
                       </p>
 
-                      <p className="text-sm text-slate-500">
+                      <p
+                        className={`text-sm ${
+                          theme ? "text-slate-400" : "text-slate-500"
+                        }`}
+                      >
                         {item.description}
                       </p>
                     </div>
@@ -84,7 +119,11 @@ export default function AboutHero() {
                 href={siteConfig.resume}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center rounded-lg border border-slate-300 px-6 py-3 font-medium text-slate-700 transition hover:border-blue-600 hover:text-blue-600"
+                className={`inline-flex items-center rounded-lg border px-6 py-3 font-medium transition ${
+                  theme
+                    ? "border-slate-700 text-slate-300 hover:border-blue-500 hover:text-blue-400"
+                    : "border-slate-300 text-slate-700 hover:border-blue-600 hover:text-blue-600"
+                }`}
               >
                 <Download className="mr-2 h-5 w-5" />
 
@@ -97,9 +136,19 @@ export default function AboutHero() {
 
           <div className="flex justify-center">
             <div className="relative">
-              <div className="absolute inset-0 rounded-3xl bg-blue-100 blur-3xl" />
+              <div
+                className={`absolute inset-0 rounded-3xl blur-3xl ${
+                  theme ? "bg-blue-500/20" : "bg-blue-100"
+                }`}
+              />
 
-              <div className="relative overflow-hidden rounded-3xl border border-slate-200 bg-white shadow-xl">
+              <div
+                className={`relative overflow-hidden rounded-3xl border shadow-xl ${
+                  theme
+                    ? "border-slate-800 bg-slate-900"
+                    : "border-slate-200 bg-white"
+                }`}
+              >
                 <Image
                   src={siteConfig.myImage}
                   alt={aboutHeroData.imageAlt}
