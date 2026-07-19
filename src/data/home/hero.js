@@ -22,5 +22,5 @@ export const heroData = {
 
   experience: "MERN Stack",
 
-  projects: "15+",
+  projects: "10+",
 };
