@@ -118,8 +118,6 @@ export const metadata = {
     apple: "/apple-touch-icon.png",
   },
 
-  manifest: "/site.webmanifest",
-
   applicationName: "Jabed Ali Mollah Portfolio",
 
   referrer: "origin-when-cross-origin",
@@ -132,7 +130,7 @@ export const metadata = {
 
   verification: {
     // Add after verifying your site
-    google: "YOUR_GOOGLE_VERIFICATION_CODE",
+    // google: "YOUR_GOOGLE_VERIFICATION_CODE",
     // yandex: "",
     // yahoo: "",
     // other: {},
