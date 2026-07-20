@@ -13,7 +13,8 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
-const baseUrl = process.env.NEXT_PUBLIC_SITE_URL;
+const baseUrl =
+  process.env.NEXT_PUBLIC_SITE_URL || "https://jabedali.vercel.app";
 export const metadata = {
   metadataBase: new URL(baseUrl),
 
@@ -108,7 +109,7 @@ export const metadata = {
     title: "Jabed Ali Mollah | MERN Stack Developer",
     description:
       "Explore my portfolio featuring MERN Stack, React.js, Next.js, Node.js, MongoDB, and full-stack development projects.",
-    images: ["images/seo/twitter-image.webp"],
+    images: ["/images/seo/twitter-image.webp"],
   },
 
   icons: {
