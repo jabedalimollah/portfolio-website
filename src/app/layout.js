@@ -94,7 +94,7 @@ export const metadata = {
     siteName: "Jabed Ali Mollah Portfolio",
     images: [
       {
-        url: "/images/seo/og-image.webp",
+        url: "/images/seo/og-image.png",
         width: 1200,
         height: 630,
         alt: "Jabed Ali Mollah Portfolio",
@@ -109,7 +109,7 @@ export const metadata = {
     title: "Jabed Ali Mollah | MERN Stack Developer",
     description:
       "Explore my portfolio featuring MERN Stack, React.js, Next.js, Node.js, MongoDB, and full-stack development projects.",
-    images: ["/images/seo/twitter-image.webp"],
+    images: ["/images/seo/twitter-image.png"],
   },
 
   icons: {

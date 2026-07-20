@@ -83,9 +83,9 @@ export const siteConfig = {
   profileImage: "/images/my_photos/profile.webp",
   myImage: "/images/my_photos/jabed-ali-mollah.webp",
 
-  ogImage: "/images/seo/og-image.webp",
+  ogImage: "/images/seo/og-image.png",
 
-  twitterImage: "images/seo/twitter-image.webp",
+  twitterImage: "images/seo/twitter-image.png",
 
   favicon: "/favicon.ico",
 
