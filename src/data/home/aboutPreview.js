@@ -26,7 +26,7 @@ export const aboutPreviewData = {
 
   stats: [
     {
-      number: "15+",
+      number: "10+",
       label: "Projects Completed",
     },
     {

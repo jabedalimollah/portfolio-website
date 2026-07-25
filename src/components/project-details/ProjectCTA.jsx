@@ -65,7 +65,7 @@ export default function ProjectCTA() {
 
             {/* Resume */}
             <a
-              href="/resume.pdf"
+              href="/resume/Jabed-Ali-Mollah-Resume.pdf"
               download
               className="inline-flex items-center justify-center rounded-xl border border-white/40 px-6 py-3 font-semibold text-white transition hover:bg-white hover:text-blue-700"
             >

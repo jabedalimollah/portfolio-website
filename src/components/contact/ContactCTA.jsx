@@ -108,7 +108,7 @@ hover:bg-slate-100
             {/* Resume */}
 
             <a
-              href="/resume.pdf"
+              href="/resume/Jabed-Ali-Mollah-Resume.pdf"
               download
               className="
 inline-flex

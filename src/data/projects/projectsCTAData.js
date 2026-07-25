@@ -19,7 +19,7 @@ export const projectsCTAData = {
 
     resume: {
       text: "Resume",
-      href: "/resume.pdf",
+      href: "/resume/Jabed-Ali-Mollah-Resume.pdf",
     },
   },
 };
