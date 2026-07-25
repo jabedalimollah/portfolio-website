@@ -80,7 +80,7 @@ export const siteConfig = {
   // Images
   // ===========================
 
-  profileImage: "/images/my_photos/profile.webp",
+  profileImage: "/images/my_photos/jabed-ali-mollah-profile.webp",
   myImage: "/images/my_photos/jabed-ali-mollah.webp",
 
   ogImage: "/images/seo/og-image.png",
