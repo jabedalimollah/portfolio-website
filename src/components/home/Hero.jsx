@@ -196,7 +196,7 @@ export default function Hero() {
                 theme ? "text-slate-400" : "text-slate-500"
               }`}
             >
-              Experience
+              Specialization
             </p>
 
             <p className="font-bold">{heroData.experience}</p>
