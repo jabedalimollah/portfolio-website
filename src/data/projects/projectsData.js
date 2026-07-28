@@ -584,6 +584,64 @@ const projects = [
       database: ["MongoDB"],
     },
   },
+  {
+    id: 11,
+    slug: "nextjs-portfolio",
+    featured: false,
+    category: "Frontend",
+
+    title: "Next.js Portfolio",
+
+    image: "/images/projects/nextjs-portfolio/nextjs-portfolio1.webp",
+
+    project_image: [
+      "/images/projects/nextjs-portfolio/nextjs-portfolio1.webp",
+      "/images/projects/nextjs-portfolio/nextjs-portfolio2.webp",
+      "/images/projects/nextjs-portfolio/nextjs-portfolio3.webp",
+      "/images/projects/nextjs-portfolio/nextjs-portfolio4.webp",
+      "/images/projects/nextjs-portfolio/nextjs-portfolio5.webp",
+      "/images/projects/nextjs-portfolio/nextjs-portfolio6.webp",
+      "/images/projects/nextjs-portfolio/nextjs-portfolio7.webp",
+    ],
+
+    shortDescription:
+      "A modern and responsive developer portfolio website built with Next.js and Tailwind CSS to showcase my skills, projects, experience, and professional journey.",
+
+    description:
+      "A modern and responsive personal portfolio website built with Next.js and Tailwind CSS. The website showcases my technical skills, featured projects, education, experience, and professional journey with a clean and user-friendly interface.",
+
+    project_info:
+      "This portfolio website was designed and developed to build my personal developer brand and showcase my skills and projects as a MERN Stack and React.js Developer. It features a responsive design, modern UI, reusable components, optimized performance, and dedicated sections for projects, skills, education, and contact information.",
+
+    live_link: "https://jabedalimollah.vercel.app/",
+
+    github_link: "https://github.com/jabedalimollah/nextjs-portfolio",
+
+    video_link: "",
+
+    features: [
+      "Responsive Design",
+      "Modern UI",
+      "Project Showcase",
+      "Skills & Experience",
+      "Reusable Components",
+      "SEO Optimized",
+      "Performance Optimized",
+    ],
+
+    tech_stack: {
+      frontend: [
+        "Next.js",
+        "React.js",
+        "JavaScript",
+        "Tailwind CSS",
+        "React Icons",
+        "Redux Toolkit",
+      ],
+      backend: [],
+      database: [],
+    },
+  },
 ];
 
 export default projects;
